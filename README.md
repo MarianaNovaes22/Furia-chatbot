@@ -5,7 +5,6 @@ Interface de chat para fãs da FURIA usando a API da OpenAI.
 - Responde perguntas sobre o time
 - Próximos jogos e resultados
 - História dos jogadores
-- [Adicione mais...]
 
 ## 🛠️ Tecnologias
 ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white)
@@ -13,7 +12,7 @@ Interface de chat para fãs da FURIA usando a API da OpenAI.
 
 ## ▶️ Como Executar
 ```bash
-git clone [seu-repo]
+git clone [Furia-chatbot]
 cd frontend
 npm install
 npm run dev
