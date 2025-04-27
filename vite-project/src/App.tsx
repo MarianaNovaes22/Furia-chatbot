@@ -1,30 +1,42 @@
-import { useState } from 'react'
+import { useEffect } from "react";
+import { Link, animateScroll as scroll } from "react-scroll";
+import Landing from "./components/Landing";
+import Chatbot from "./components/Chatbot";
+import Footer from "./components/Footer";
 
-import './App.css'
+const App = () => {
+  useEffect(() => {
+    const handleScroll = (event: WheelEvent) => {
+      if (event.deltaY > 0) {
+        scroll.scrollTo(document.getElementById("chatbot")!.offsetTop, {
+          duration: 800,
+          smooth: true,
+        });
+      }
+    };
 
-function App() {
-  const [count, setCount] = useState(0)
+    window.addEventListener("wheel", handleScroll);
+    return () => window.removeEventListener("wheel", handleScroll);
+  }, []);
 
   return (
-    <>
-      <div className="bg-blue-500 text-white p-4">
-  Olá, Tailwind!
-</div>
+    <div className="flex flex-col">
+      <section id="landing" className="h-screen flex justify-center items-center bg-blue-500">
+        <Landing />
+        <Link to="chatbot" smooth={true} duration={800}>
+          <button className="absolute bottom-10 text-white">↓ Scroll para o Chatbot</button>
+        </Link>
+      </section>
 
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+      <section id="chatbot" className="h-screen flex justify-center items-center bg-gray-800">
+        <Chatbot />
+      </section>
 
-export default App
+      <section id="footer" className="h-screen flex justify-center items-center bg-black text-white">
+        <Footer />
+      </section>
+    </div>
+  );
+};
+
+export default App;
