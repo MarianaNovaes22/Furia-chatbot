@@ -16,7 +16,7 @@ const Landing = () => {
         {/* Logo + Nome */}
         <div className="flex items-center gap-4">
           <img src={LogoFuriaLobo} alt="Logo Furia Lobo" className="h-10" />
-          <img src={LogoFuriaTexto} alt="Nome Furia" className="h-6" />
+          
         </div>
         {/* Menu de Navegação - Usando ScrollLink em vez de <a> */}
         <nav className="flex space-x-8">
@@ -50,12 +50,14 @@ const Landing = () => {
             <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all group-hover:w-full"></span>
           </ScrollLink>
         </nav>
-        {/* Ícone de Usuário */}
+        
         <div>
           <FaUser className="text-white text-2xl cursor-pointer" />
         </div>
       </header>
-      {/* Conteúdo principal */}
+        
+        
+        {/* Conteúdo Principal */}
       <div className="flex flex-col justify-center items-center text-center text-white space-y-4 flex-grow">
         <h1 className="text-4xl md:text-6xl font-bold flex items-center justify-center gap-2 flex-wrap animate-fadeInUp">
           FALE COM O CHATBOT DA
@@ -66,7 +68,7 @@ const Landing = () => {
         </p>
         <ScrollLink to="chatbot" smooth={true} duration={800} className="cursor-pointer">
           <div className="absolute bottom-10">
-            <img src={SetaBaixo} alt="Seta para baixo" className="w-8 h-8 animate-bounce" />
+            <img src={SetaBaixo} alt="Seta para baixo" className="w-16 h-16 animate-bounce" />
           </div>
         </ScrollLink>
       </div>

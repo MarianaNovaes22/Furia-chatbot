@@ -1,7 +1,15 @@
+import BackgroundChatbot from "../assets/imagens/background-chatbot.png";
+import Sidebar from "./Chatbot/Sidebar";
+import ChatArea from "./Chatbot/ChatArea";
+
 const Chatbot = () => {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-800">
-      <h2 className="text-white text-3xl">Aqui é a área do chatbot</h2>
+    <div 
+      className="h-screen w-full flex" 
+      style={{ backgroundImage: `url(${BackgroundChatbot})`, backgroundSize: "cover", backgroundPosition: "center" }}
+    >
+      <Sidebar />
+      <ChatArea />
     </div>
   );
 };
