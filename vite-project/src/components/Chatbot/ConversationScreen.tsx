@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const ConversationScreen = () => {
   const [inputValue, setInputValue] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputValue(e.target.value);
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto"; // Reset altura
+      textarea.style.height = Math.min(textarea.scrollHeight, 200) + "px"; // Limita altura máxima
+    }
+  };
 
   const handleSubmit = () => {
     if (inputValue.trim()) {
       // Aqui você pode disparar o envio da mensagem
       console.log("Mensagem enviada:", inputValue);
       setInputValue(""); // limpa o campo
+      
+      // Resetar altura após enviar
+      const textarea = textareaRef.current;
+      if (textarea) {
+        textarea.style.height = "auto";
+      }
     }
   };
 
@@ -18,18 +34,19 @@ const ConversationScreen = () => {
         <div className="bg-white/10 p-2 rounded w-max">Olá! Como posso ajudar?</div>
       </div>
 
-      {/* Novo input estilizado igual à tela de welcome */}
+      {/* Caixa de mensagem com auto-resize usando ref */}
       <div className="flex mt-4 w-full max-w-md px-4 gap-2 self-center">
-        <input
-          type="text"
+        <textarea
+          ref={textareaRef}
           placeholder="Pergunte alguma coisa"
           value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          className="flex-1 px-4 py-2 rounded-full bg-gray-800 text-white placeholder-gray-400 shadow-md"
+          onChange={handleInputChange}
+          rows={1}
+          className="flex-1 resize-none px-4 py-2 rounded-full bg-gray-800 text-white placeholder-gray-400 shadow-md overflow-hidden leading-5 max-h-52"
         />
         <button
           onClick={handleSubmit}
-          className="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-full shadow-md"
+          className="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-full shadow-md text-white"
         >
           ➤
         </button>
