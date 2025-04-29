@@ -34,7 +34,7 @@ const ConversationScreen = () => {
         <div className="bg-white/10 p-2 rounded w-max">Olá! Como posso ajudar?</div>
       </div>
 
-      {/* Caixa de mensagem com auto-resize usando ref */}
+      {/* Caixa de mensagem com auto-resize */}
       <div className="flex mt-4 w-full max-w-md px-4 gap-2 self-center">
         <textarea
           ref={textareaRef}
