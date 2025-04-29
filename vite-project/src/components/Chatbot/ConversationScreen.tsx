@@ -30,7 +30,7 @@ const ConversationScreen = () => {
   return (
     <div className="flex flex-col justify-between h-full p-4">
       {/* Área de mensagens */}
-      <div className="flex-1 overflow-y-auto space-y-4 text-white">
+      <div className="flex flex-col gap-4 overflow-y-auto h-full px-4 pt-20 lg:pt-4 text-white">
         <div className="bg-white/10 p-2 rounded w-max">Olá! Como posso ajudar?</div>
       </div>
 
