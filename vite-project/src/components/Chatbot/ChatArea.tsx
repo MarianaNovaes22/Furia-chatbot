@@ -12,7 +12,9 @@ const ChatArea = () => {
       ) : (
         <WelcomeScreen onStartChat={() => setHasStartedChat(true)} />
       )}
+      
     </div>
+    
   );
 };
 
