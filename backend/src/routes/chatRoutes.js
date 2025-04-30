@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
             role: "user",
             content: mensagem,
           },
-        ],        
+        ],
       },
       {
         headers: {
@@ -35,7 +35,14 @@ router.post("/", async (req, res) => {
       }
     );
 
-    res.json({ reply: response.data.choices[0].message.content });
+    const reply = response.data?.choices?.[0]?.message?.content;
+
+    if (!reply) {
+      console.error("Resposta inválida da API:", response.data);
+      return res.status(500).json({ reply: "Erro ao processar a mensagem." });
+    }
+
+    res.json({ reply });
   } catch (error) {
     console.error("Erro ao consultar o OpenRouter:", error.response?.data || error.message);
     res.status(500).json({ reply: "Erro ao processar a mensagem." });
