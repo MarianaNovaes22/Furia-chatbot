@@ -47,7 +47,5 @@ O back-end estará disponível em: http://localhost:3000
    
    VITE_API_URL=http://localhost:3000
    
-O front-end estará disponível em: 
-
-http://localhost:5173
+O front-end estará disponível em: http://localhost:5173
  
