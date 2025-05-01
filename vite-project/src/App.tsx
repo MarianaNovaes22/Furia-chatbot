@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Element, Events, scroller } from "react-scroll";
 import Landing from "./components/Landing";
 import Chatbot from "./components/Chatbot";
