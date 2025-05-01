@@ -25,10 +25,14 @@ https://github.com/MarianaNovaes22/furia-backend
 ### 2. Configurar o Back-end
 1. Acesse a pasta chatbot-furia-backend
 2. Crie um arquivo .env na raiz com o seguinte conteúdo:
+   
    OPENROUTER_API_KEY=sua-chave-aqui
-3. Instale as dependências e inicie o servidor:
+   
+4. Instale as dependências e inicie o servidor:
+
    npm install
    npm run dev
+   
 O back-end estará disponível em: http://localhost:3000
 
 ### 3. Configurar o Front-end
