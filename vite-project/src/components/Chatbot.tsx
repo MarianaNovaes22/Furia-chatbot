@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import BackgroundChatbot from "../assets/imagens/background-chatbot.png";
 import Sidebar from "./Chatbot/Sidebar";
 import ChatArea from "./Chatbot/ChatArea";

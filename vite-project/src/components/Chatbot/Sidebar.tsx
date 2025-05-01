@@ -6,9 +6,9 @@ interface SidebarProps {
 const Sidebar = ({ closeSidebar, onResetChat }: SidebarProps) => {
   const handleClick = (label: string) => {
     if (label === "Reiniciar" && onResetChat) {
-      onResetChat(); // reseta o chat
+      onResetChat(); 
     }
-    if (closeSidebar) closeSidebar(); // fecha sidebar no mobile
+    if (closeSidebar) closeSidebar(); 
   };
 
   return (
