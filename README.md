@@ -18,9 +18,11 @@ Interface de chat para fãs da FURIA usando a API da OpenAI.
 ⚠️ O back-end está hospedado no Render Free Tier, e pode demorar alguns segundos para responder na primeira requisição, devido à hibernação automática.
 
 ## 🚀 Como Rodar Localmente
+
 ### 1. Clone os repositórios
 https://github.com/MarianaNovaes22/furia-frontend
 https://github.com/MarianaNovaes22/furia-backend
+
 
 ### 2. Configurar o Back-end
 1. Acesse a pasta chatbot-furia-backend
@@ -30,14 +32,22 @@ https://github.com/MarianaNovaes22/furia-backend
    
 4. Instale as dependências e inicie o servidor:
 
+
    npm install
+   
    npm run dev
+
    
 O back-end estará disponível em: http://localhost:3000
+
 
 ### 3. Configurar o Front-end
 1. Acesse a pasta vite-project
 2. Crie um arquivo .env na raiz com o seguinte conteúdo:
+   
    VITE_API_URL=http://localhost:3000
-O front-end estará disponível em: http://localhost:5173
+   
+O front-end estará disponível em: 
+
+http://localhost:5173
  
