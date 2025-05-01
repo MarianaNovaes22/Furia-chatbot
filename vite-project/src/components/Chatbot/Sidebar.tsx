@@ -1,9 +1,13 @@
 interface SidebarProps {
   closeSidebar?: () => void;
+  onResetChat?: () => void;
 }
 
-const Sidebar = ({ closeSidebar }: SidebarProps) => {
-  const handleClick = () => {
+const Sidebar = ({ closeSidebar, onResetChat }: SidebarProps) => {
+  const handleClick = (label: string) => {
+    if (label === "Reiniciar" && onResetChat) {
+      onResetChat(); // reseta o chat
+    }
     if (closeSidebar) closeSidebar(); // fecha sidebar no mobile
   };
 
@@ -16,10 +20,10 @@ const Sidebar = ({ closeSidebar }: SidebarProps) => {
           className="bg-gray-500 text-white placeholder-white/60 px-4 py-2 rounded-full opacity-30 cursor-not-allowed"
           disabled
         />
-        {["Novo Chat", "Explorar", "Histórico"].map((label, i) => (
+        {["Reiniciar"].map((label, i) => (
           <button
             key={i}
-            onClick={handleClick}
+            onClick={() => handleClick(label)}
             className="bg-gray-300 hover:bg-gray-400 text-black rounded-full py-2 px-4 text-left shadow"
           >
             {label.toUpperCase()}

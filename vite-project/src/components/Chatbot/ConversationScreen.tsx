@@ -1,6 +1,16 @@
 import { useState, useRef } from "react";
 
-const ConversationScreen = () => {
+interface Message {
+  role: "user" | "assistant";
+  content: string;
+}
+
+interface Props {
+  messages: Message[];
+  onSendMessage: (message: string) => void;
+}
+
+const ConversationScreen = ({ messages, onSendMessage }: Props) => {
   const [inputValue, setInputValue] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -8,22 +18,17 @@ const ConversationScreen = () => {
     setInputValue(e.target.value);
     const textarea = textareaRef.current;
     if (textarea) {
-      textarea.style.height = "auto"; // Reset altura
-      textarea.style.height = Math.min(textarea.scrollHeight, 200) + "px"; // Limita altura máxima
+      textarea.style.height = "auto";
+      textarea.style.height = Math.min(textarea.scrollHeight, 200) + "px";
     }
   };
 
   const handleSubmit = () => {
     if (inputValue.trim()) {
-      // Aqui você pode disparar o envio da mensagem
-      console.log("Mensagem enviada:", inputValue);
-      setInputValue(""); // limpa o campo
-      
-      // Resetar altura após enviar
+      onSendMessage(inputValue);
+      setInputValue("");
       const textarea = textareaRef.current;
-      if (textarea) {
-        textarea.style.height = "auto";
-      }
+      if (textarea) textarea.style.height = "auto";
     }
   };
 
@@ -31,10 +36,21 @@ const ConversationScreen = () => {
     <div className="flex flex-col justify-between h-full p-4">
       {/* Área de mensagens */}
       <div className="flex flex-col gap-4 overflow-y-auto h-full px-4 pt-20 lg:pt-4 text-white">
-        <div className="bg-white/10 p-2 rounded w-max">Olá! Como posso ajudar?</div>
+        {messages.map((msg, i) => (
+          <div
+            key={i}
+            className={`p-2 rounded max-w-[80%] ${
+              msg.role === "user"
+                ? "bg-blue-500 self-end"
+                : "bg-white/10 self-start"
+            }`}
+          >
+            {msg.content}
+          </div>
+        ))}
       </div>
 
-      {/* Caixa de mensagem com auto-resize */}
+      {/* Caixa de mensagem */}
       <div className="flex mt-4 w-full max-w-md px-4 gap-2 self-center">
         <textarea
           ref={textareaRef}
